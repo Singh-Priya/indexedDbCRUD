@@ -1,30 +1,23 @@
 import React, { Component } from "react";
 import LocationDBHandler from "../../components/createDatabase";
-import getDataFromDB from "../../components/getDataFromDB";
 
-let db = LocationDBHandler("LocationDB", {
-  locationData:
-    "++id, locationName, address1, suiteNo, address2, city, state, zipCode, phoneNumber, timeZone, appoitpool",
-});
+let db = LocationDBHandler();
 
 class AddLocation extends Component {
   state = {
     fieldEmpty: false,
-    data: {},
   };
 
   insertData = (dataObj) => {
-    console.log("fieldEmpty>>", this.state.fieldEmpty);
-    console.log("dataObj>>>", dataObj);
     let dbname = db.locationData;
     console.log("dbname>>", dbname);
-    for (const val in dataObj) {
-      if (dataObj[val] !== "" && dataObj[val] !== null) {
-        this.setState({ fieldEmpty: true });
-      } else {
-        this.setState({ fieldEmpty: false });
-      }
-    }
+    // for (const val in dataObj) {
+    //   if (dataObj[val] !== "" && dataObj[val] !== null) {
+    //     this.setState({ fieldEmpty: true });
+    //   } else {
+    //     this.setState({ fieldEmpty: false });
+    //   }
+    // }
 
     if (!this.state.fieldEmpty) {
       dbname.bulkAdd([dataObj]);
@@ -32,14 +25,6 @@ class AddLocation extends Component {
     } else {
       console.log("Please provide the data!!");
     }
-
-    // locationNodeVal = address1NodeVal = suiteNodeVal = address2NodeVal = cityNodeVal = stateNodeVal = zipCodeNodeVal = phoneNumberNodeVal;
-    // timeZoneNodeVal = appoitPoolNodeVal = "";
-    getDataFromDB(db.locationData, (locationData) => {
-      this.setState({ data: locationData });
-      console.log("state data", this.state.data);
-      console.log(locationData.id);
-    });
   };
 
   render() {
@@ -49,33 +34,33 @@ class AddLocation extends Component {
         <form>
           <div className="form_group">
             <label>Location Name</label>
-            <input type="text" id="location_name" />
+            <input type="text" id="location_name" autoComplete="off" />
           </div>
 
           <div className="form_wrap_half">
             <div className="form_group">
               <label>Address Line 1</label>
-              <input type="text" id="address1" />
+              <input type="text" id="address1" autoComplete="off" />
             </div>
             <div className="form_group">
               <label>Suite No.</label>
-              <input type="text" id="suite" />
+              <input type="text" id="suite" autoComplete="off" />
             </div>
           </div>
 
           <div className="form_wrap_three">
             <div className="form_group">
               <label>Address Line 2</label>
-              <input type="text" id="address2" />
+              <input type="text" id="address2" autoComplete="off" />
             </div>
             <div className="form_wrap">
               <div className="form_group">
                 <label>City</label>
-                <input type="text" id="city" />
+                <input type="text" id="city" autoComplete="off" />
               </div>
               <div className="form_group">
                 <label>State</label>
-                <input type="text" id="state" />
+                <input type="text" id="state" autoComplete="off" />
               </div>
             </div>
           </div>
@@ -84,22 +69,22 @@ class AddLocation extends Component {
             <div className="form_wrap">
               <div className="form_group">
                 <label>Zip Code</label>
-                <input type="text" id="zip_code" />
+                <input type="text" id="zip_code" autoComplete="off" />
               </div>
               <div className="form_group">
                 <label>Phone Number</label>
-                <input type="text" id="phone_number" />
+                <input type="text" id="phone_number" autoComplete="off" />
               </div>
             </div>
             <div className="form_group">
               <label>Time Zone</label>
-              <input type="text" id="time_zone" />
+              <input type="text" id="time_zone" autoComplete="off" />
             </div>
           </div>
 
           <div className="form_group">
             <label>Appointment Pool</label>
-            <input type="text" id="appointment_pool" />
+            <input type="text" id="appointment_pool" autoComplete="off" />
           </div>
 
           <div className="button_group">

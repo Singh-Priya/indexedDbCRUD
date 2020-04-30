@@ -1,18 +1,19 @@
 import LocationDBHandler from "../../components/createDatabase";
 
-let db = LocationDBHandler("LocationDB", {
-  locationData:
-    "++id, locationName, address1, suiteNo, address2, city, state, zipCode, phoneNumber, timeZone, appoitpool",
-});
+let db = LocationDBHandler();
 
 const getDataFromDB = (dbName, indexofData) => {
   let index = 0;
   let sortedData = {};
+  let newdata = [];
   dbName.count((count) => {
     if (count) {
-      db.locationData.each((data) => {
-        sortedData = sortData(data);
-        indexofData(sortedData, index++);
+      db.locationData.each((table) => {
+        sortedData = sortData(table);
+        // console.log("sorted data", sortedData);
+        newdata.push(sortedData);
+        // console.log("newdata", newdata);
+        indexofData(newdata, index++);
       });
     } else {
       indexofData(0);
@@ -24,15 +25,8 @@ const sortData = (data) => {
   let dataObj = {
     id: data.id,
     locationName: data.locationName,
-    address1: data.address1,
-    suiteNo: data.suiteNo,
-    address2: data.address2,
-    city: data.city,
-    state: data.state,
-    zipcode: data.zipCode,
+    address: `${data.address1}, ${data.suiteNo}, ${data.address2}, ${data.city}, ${data.state}, ${data.zipCode}`,
     phoneNumber: data.phoneNumber,
-    timeZone: data.timeZone,
-    appoitpool: data.appoitpool,
   };
   return dataObj;
 };

@@ -47,7 +47,7 @@
   }
 
   th {
-    &.count {
+    &:first-child {
       + th {
         padding-left: 50px;
       }
@@ -56,7 +56,7 @@
 
   td {
     color: #696969;
-    &.count {
+    &:first-child {
       position: relative;
       text-align: center;
       z-index: 1;
