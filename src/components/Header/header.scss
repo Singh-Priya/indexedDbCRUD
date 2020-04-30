@@ -13,12 +13,14 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    span {
+    a:first-child {
       font-size: 15px;
       color: #696969;
       font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
     }
-    a {
+    a:last-child {
       color: #fff;
       background-color: #2e5f8f;
       border-radius: 25px;

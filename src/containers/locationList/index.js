@@ -57,7 +57,7 @@ class LocationList extends Component {
     let iddd = data.map((item) => item.id);
     return (
       <Fragment>
-        {data ? (
+        {data.length > 0 ? (
           <table className="listing_wrap">
             <thead>
               <tr>
