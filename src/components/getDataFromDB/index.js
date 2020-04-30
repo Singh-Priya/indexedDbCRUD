@@ -10,9 +10,7 @@ const getDataFromDB = (dbName, indexofData) => {
     if (count) {
       db.locationData.each((table) => {
         sortedData = sortData(table);
-        // console.log("sorted data", sortedData);
         newdata.push(sortedData);
-        // console.log("newdata", newdata);
         indexofData(newdata, index++);
       });
     } else {

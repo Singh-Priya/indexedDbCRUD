@@ -10,8 +10,6 @@ class AddLocation extends Component {
   };
 
   insertData = (dataObj) => {
-    let dbname = db.locationData;
-    console.log("dbname>>", dbname);
     for (const val in dataObj) {
       if (dataObj[val] !== "" && dataObj[val] !== null) {
         this.setState({ fieldEmpty: true });
@@ -20,20 +18,18 @@ class AddLocation extends Component {
       }
     }
     this.setState({ insertData: dataObj });
-    console.log("insertData>>", this.state.insertData);
-    console.log("dataObj>>", dataObj);
   };
 
   componentDidUpdate() {
     if (this.state.fieldEmpty === true) {
       db.locationData.bulkAdd([this.state.insertData]);
+      alert("Data Inserted Successfully");
     } else {
       alert("Please provide the complete data!!");
     }
   }
 
   render() {
-    console.log("empty field>>", this.state.fieldEmpty);
     return (
       <div className="addLocation_wrap">
         <h3>Add Location</h3>

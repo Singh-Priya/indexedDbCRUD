@@ -25,7 +25,6 @@ class LocationList extends Component {
     let editId = parseInt(e.target.parentElement.parentElement.id);
     this.props.history.push("/addlocation");
     db.locationData.get(editId, (locationData) => {
-      console.log("locationData in edit", locationData);
       document.getElementById("location_name").value =
         locationData.locationName;
       document.getElementById("address1").value = locationData.address2;
@@ -52,7 +51,6 @@ class LocationList extends Component {
   };
 
   render() {
-    console.log("total data", this.state.data);
     const { data } = this.state;
     let iddd = data.map((item) => item.id);
     return (

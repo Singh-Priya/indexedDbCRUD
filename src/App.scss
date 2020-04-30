@@ -2,6 +2,10 @@
 @import "./containers/locationList/style.scss";
 @import "./containers/addLocation//style.scss";
 
+.main_wrapper {
+  min-height: calc(100vh - 62px);
+}
+
 .content_wrapper {
   margin: 80px auto 50px;
   width: calc(100% - 40px);
